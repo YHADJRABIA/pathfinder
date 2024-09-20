@@ -8,10 +8,11 @@ import cn from "classnames"
 interface PropTypes {
   path?: Coordinate[] | null
   title: string
+  errorMessage: string | null
   className?: string
 }
 
-const PathArray = ({ path, title, className }: PropTypes) => {
+const PathArray = ({ path, title, errorMessage, className }: PropTypes) => {
   const hasPath = path !== null
   const contentRef = useRef<HTMLDivElement | null>(null)
   const [maxHeight, setMaxHeight] = useState(0)
@@ -29,6 +30,7 @@ const PathArray = ({ path, title, className }: PropTypes) => {
     }
   }, [hasPath, path])
 
+  if (errorMessage) return <Typography>{errorMessage}</Typography>
   if (path === undefined) return null
 
   return (
@@ -53,7 +55,6 @@ const PathArray = ({ path, title, className }: PropTypes) => {
             )
           })}
       </ul>
-      {!hasPath && <Typography>No path found</Typography>}
     </div>
   )
 }
