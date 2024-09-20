@@ -1,5 +1,6 @@
 import { useState, ChangeEvent } from "react"
 import { Grid, Coordinate } from "@/types/pathfinder"
+import { getErrorMessage } from "@/utils/error"
 
 interface PropTypes {
   grid: Grid
@@ -22,8 +23,8 @@ export function useFileUpload(onFileParsed: OnFileParsed) {
           setError(null)
           onFileParsed(json)
         } catch (err) {
+          console.error("Error handling file upload:", getErrorMessage(err)) // TODO: fix this with respect to JEST to prevent annoying log
           setError("Invalid JSON format")
-          console.error("Error handling file upload:", err)
         }
       }
       reader.readAsText(file)
