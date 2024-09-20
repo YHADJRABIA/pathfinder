@@ -1,0 +1,16 @@
+.root {
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.path {
+  padding: 2rem;
+  @include flexCenter(row, flex-start, flex-start);
+  gap: 2rem;
+  border-radius: 0.8rem;
+  background-color: var(--primary-gray-color);
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
+}

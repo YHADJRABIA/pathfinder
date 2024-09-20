@@ -1,0 +1,13 @@
+.root {
+  @include flexCenter(column, center, flex-start);
+  align-content: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  border: 1px solid var(--primary-gray-border);
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+}
+
+.pathArray {
+  width: 100%;
+}

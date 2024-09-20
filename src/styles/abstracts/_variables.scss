@@ -1,0 +1,51 @@
+:root {
+  // Colors
+  --primary-white-color: #fff;
+  --secondary-white-color: #f0f0f0;
+
+  --primary-black-color: #1a1423;
+  --secondary-black-color: #0d0d0d;
+  --tertiary-black-color: #333333;
+
+  --primary-gray-color: #f4f4f4;
+  --secondary-gray-color: #a4a9b4;
+
+  --primary-gray-border: #ebebef;
+  --secondary-gray-border: #c0c0c0;
+
+  --primary-green-color: #4dd963;
+  --secondary-green-color: #a1c181;
+
+  --primary-red-color: #ed4337;
+  --secondary-red-color: #ff4848;
+
+  --primary-orange-color: #fd9726;
+
+  --primary-blue-color: #3f88e8;
+  --secondary-blue-color: #0083ce;
+  --tertiary-blue-color: #e0f7fa;
+
+  --primary-yellow-color: #ffea00;
+
+  // Gradients
+  --black-gradient-color: linear-gradient(180deg, #555, #000);
+
+  // Dimensions
+  --header-height: 6.3rem;
+
+  // Layout
+  --page-padding: 2rem;
+  --page-max-width: 80rem;
+  --container-max-width: 40rem;
+
+  @include respond-to("small") {
+    --gutter-width: 1.6rem;
+  }
+
+  @include respond-to("medium") {
+    --gutter-width: 2.4rem;
+  }
+
+  --half-gutter-width: calc(var(--gutter-width) * 0.5);
+  --gutter-compensation: calc(var(--half-gutter-width) * -1);
+}

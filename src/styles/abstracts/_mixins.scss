@@ -1,0 +1,135 @@
+$breakpoints: (
+  'small': (
+    max-width: 767px,
+  ),
+  'medium': (
+    min-width: 768px,
+  ),
+  'large': (
+    min-width: 1024px,
+  ),
+  'huge': (
+    min-width: 1200px,
+  ),
+);
+
+@mixin flexCenter(
+  $direction,
+  $justify-content: space-evenly,
+  $align-items: center,
+  $wrap: wrap
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-flow: $wrap $direction;
+  align-content: stretch;
+}
+
+@mixin hideScrollbars() {
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // Internet Explorer
+
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari
+  }
+}
+
+@mixin multiLineEllipsisCommon($line-height, $lines-to-show) {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 100%;
+  overflow: hidden;
+
+  line-height: $line-height;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+}
+
+@mixin multiLineEllipsis($line-height, $lines-to-show) {
+  @include multiLineEllipsisCommon($line-height, $lines-to-show);
+
+  max-height: calc(
+    1em * #{$line-height * $lines-to-show}
+  ); /* Fallback for non-webkit */
+}
+
+// To conceal overflowing elements and add "..." at the end
+@mixin truncated {
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// For long words, making them complete on the next line
+@mixin ow {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/*- Reset params -*/
+@mixin initialProperties {
+  all: unset;
+}
+
+// Prevents user from selecting or highlighting element
+@mixin preventUserSelect {
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* The rule below is not implemented in browsers yet */
+  -o-user-select: none;
+
+  /* The rule below is implemented in most browsers by now */
+  user-select: none;
+}
+
+/* Responsive Breakpoints */
+
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin hideOnSmall {
+  @include respond-to('small') {
+    display: none;
+  }
+}
+
+@mixin hideOnMedium {
+  @include respond-to('medium') {
+    display: none;
+  }
+}
+@mixin hideOnLarge {
+  @include respond-to('large') {
+    display: none;
+  }
+}
+
+@mixin removeTapHighlight {
+  -webkit-tap-highlight-color: transparent;
+}

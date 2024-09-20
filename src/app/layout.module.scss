@@ -1,0 +1,8 @@
+.root {
+  padding: var(--page-padding);
+  width: 100%;
+
+  & > div {
+    width: min(100%, var(--page-max-width));
+  }
+}

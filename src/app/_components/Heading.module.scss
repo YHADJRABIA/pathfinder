@@ -1,0 +1,4 @@
+.root {
+  @include flexCenter(row, center);
+  gap: 1rem;
+}

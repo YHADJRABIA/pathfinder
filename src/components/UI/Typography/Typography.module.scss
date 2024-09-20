@@ -1,0 +1,35 @@
+.root {
+  @include ow;
+}
+
+.xxs {
+  font-size: clamp(1rem, 2.25vw, 1.2rem);
+}
+
+.xs {
+  font-size: clamp(1.2rem, 3vw, 1.4rem);
+}
+
+.s {
+  font-size: clamp(1.4rem, 2.65vw, 1.6rem);
+}
+
+.m {
+  font-size: clamp(1.6rem, 4.5vw, 1.8rem);
+}
+
+.l {
+  font-size: clamp(1.8rem, 4.5vw, 2rem);
+}
+
+.xl {
+  font-size: clamp(2rem, 4.5vw, 2.4rem);
+}
+
+.xxl {
+  font-size: clamp(2.4rem, 6.5vw, 3rem);
+}
+
+.xxxl {
+  font-size: clamp(3rem, 6.5vw, 3.6rem);
+}
