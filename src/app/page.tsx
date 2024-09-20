@@ -6,15 +6,16 @@ import PathArray from "@/components/Pathfinder/PathArray"
 import { useFindPath } from "@/hooks/useFindPath"
 import { useFileUpload } from "@/hooks/useFileUpload"
 import Heading from "./_components/Heading"
+import Loader from "@/components/UI/Loader"
 
 // Texts shouldn't be hard-coded, they should come from a json file with the locale as a title
 export default function HomePage() {
-  const { path, findPathFromData } = useFindPath()
-
-  // Initialize useFileUpload with the findPathFromData callback
-  const { error, handleFileUpload } = useFileUpload(({ grid, start, end }) => {
-    findPathFromData(grid, start, end)
-  })
+  const { path, findPathFromData, isLoading, error: pathError } = useFindPath()
+  const { error: fileError, handleFileUpload } = useFileUpload(
+    ({ grid, start, end }) => {
+      findPathFromData(grid, start, end)
+    }
+  )
 
   return (
     <div className={styles.root}>
@@ -22,9 +23,18 @@ export default function HomePage() {
       <Uploader
         validFormat=".json"
         onUpload={handleFileUpload}
-        errorMessage={error}
+        errorMessage={fileError}
       />
-      <PathArray title="Path found:" path={path} className={styles.pathArray} />
+      {isLoading ? (
+        <Loader size={24} />
+      ) : (
+        <PathArray
+          title="Path found:"
+          path={path}
+          errorMessage={pathError}
+          className={styles.pathArray}
+        />
+      )}
     </div>
   )
 }
