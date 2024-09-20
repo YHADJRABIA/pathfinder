@@ -21,7 +21,7 @@ export function useFindPath() {
       if (res.data.success) {
         setPath(res.data.path)
       } else {
-        setError(res.data.message)
+        setError(getErrorMessage(res))
       }
     } catch (err) {
       setError(getErrorMessage(err))
