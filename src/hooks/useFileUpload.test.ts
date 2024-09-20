@@ -1,7 +1,6 @@
 import { ChangeEvent } from "react"
 import { useFileUpload } from "./useFileUpload"
 import { act, renderHook } from "@testing-library/react"
-import { getErrorMessage } from "@/utils/error"
 
 describe("useFileUpload", () => {
   const mockOnFileParsed = jest.fn()
