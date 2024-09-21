@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react"
 import { useFileUpload } from "./useFileUpload"
 import { act, renderHook } from "@testing-library/react"
+import { getErrorMessage } from "@/utils/error"
 
 describe("useFileUpload", () => {
   const mockOnFileParsed = jest.fn()
@@ -65,6 +66,7 @@ describe("useFileUpload", () => {
         } catch (err) {
           expect(result.current.error).toBe("Invalid JSON format")
           expect(mockOnFileParsed).not.toHaveBeenCalled()
+          console.error("Error handling file upload:", getErrorMessage(err))
         }
       })
     }
