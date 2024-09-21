@@ -23,6 +23,8 @@ Upload .json file (from /utils/samples) and get the shortest path returned as a 
 
 • Tests using Jest target only the most important logic;
 
+• Project uses TypeScript and has Prettier & Linter rules;
+
 ## Note that:
 
 - All texts are hard-coded. In a proper production app, they would come from a locale `.json` file to facilitate their maintenance and make it easier to internationalise the application in more languages.
