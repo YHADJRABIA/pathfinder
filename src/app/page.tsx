@@ -22,8 +22,8 @@ export default function HomePage() {
       <Heading label="Pathfinder" />
       <Uploader
         validFormat=".json"
-        onUpload={handleFileUpload}
         errorMessage={fileError}
+        onUpload={handleFileUpload}
       />
       {isLoading ? (
         <Loader size={24} />

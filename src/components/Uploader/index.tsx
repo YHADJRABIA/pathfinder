@@ -24,8 +24,8 @@ const Uploader = ({
         type="file"
         accept={validFormat}
         id="file-upload"
-        onChange={onUpload}
         className={styles.fileInput}
+        onChange={onUpload}
       />
       <label htmlFor="file-upload" className={styles.cta}>
         Upload File
