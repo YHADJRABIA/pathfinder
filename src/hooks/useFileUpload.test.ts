@@ -63,10 +63,10 @@ describe('useFileUpload', () => {
       act(() => {
         try {
           JSON.parse(reader.result as string)
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
           expect(result.current.error).toBe('Invalid JSON format')
           expect(mockOnFileParsed).not.toHaveBeenCalled()
-          console.error('Error handling file upload:', getErrorMessage(err))
         }
       })
     }

@@ -22,8 +22,9 @@ export function useFileUpload(onFileParsed: OnFileParsed) {
           const json = JSON.parse(e.target?.result as string)
           setError(null)
           onFileParsed(json)
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (err) {
-          console.error('Error handling file upload:', getErrorMessage(err)) // TODO: fix this with respect to JEST to prevent annoying log
+          /*  console.error('Error handling file upload:', getErrorMessage(err)) */ // TODO: fix this with respect to JEST to prevent annoying log
           setError('Invalid JSON format')
         }
       }
