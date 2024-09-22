@@ -25,7 +25,9 @@ Upload .json file (from /utils/samples) and get the shortest path returned as a 
 
 • Jest testing only covers the most important logic;
 
-• Conventions & code security are enforced with TypeScript, ESLint & Prettier;
+• Conventions & code security are enforced with Husky, TypeScript, ESLint & Prettier;
+
+• A Husky pre-push hook ensures that checks run locally before being pushed to GitHub to prevent failing workflows & spare potential bandwidth costs;
 
 • Workflows are coordinated by `main.yaml`:
 
