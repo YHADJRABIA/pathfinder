@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const path = require("path")
+const path = require("path");
 
 /** @type {import('next').NextConfig} */
 
@@ -9,6 +9,6 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "src/styles")],
     prependData: `@import "utilities.scss";`, // Scss code that'd be prepended to every single scss file.
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

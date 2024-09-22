@@ -1,37 +1,37 @@
-import Typography from "@/components/UI/Typography"
-import { Coordinate } from "@/types/pathfinder"
-import styles from "./PathArray.module.scss"
-import React, { useEffect, useRef, useState } from "react"
-import PathCell from "../PathCell"
-import cn from "classnames"
+import Typography from "@/components/UI/Typography";
+import { Coordinate } from "@/types/pathfinder";
+import styles from "./PathArray.module.scss";
+import React, { useEffect, useRef, useState } from "react";
+import PathCell from "../PathCell";
+import cn from "classnames";
 
 interface PropTypes {
-  path?: Coordinate[] | null
-  title: string
-  errorMessage: string | null
-  className?: string
+  path?: Coordinate[] | null;
+  title: string;
+  errorMessage: string | null;
+  className?: string;
 }
 
 const PathArray = ({ path, title, errorMessage, className }: PropTypes) => {
-  const hasPath = path !== null
-  const contentRef = useRef<HTMLDivElement | null>(null)
-  const [maxHeight, setMaxHeight] = useState(0)
-  const [isShown, setIsShown] = useState(false)
+  const hasPath = path !== null;
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [maxHeight, setMaxHeight] = useState(0);
+  const [isShown, setIsShown] = useState(false);
 
   useEffect(() => {
     if (hasPath) {
-      setIsShown(true)
+      setIsShown(true);
       if (contentRef.current) {
-        setMaxHeight(contentRef.current.scrollHeight)
+        setMaxHeight(contentRef.current.scrollHeight);
       }
     } else {
-      setMaxHeight(0)
-      setIsShown(false)
+      setMaxHeight(0);
+      setIsShown(false);
     }
-  }, [hasPath, path])
+  }, [hasPath, path]);
 
-  if (errorMessage) return <Typography>{errorMessage}</Typography>
-  if (path === undefined) return null
+  if (errorMessage) return <Typography>{errorMessage}</Typography>;
+  if (path === undefined) return null;
 
   return (
     <div
@@ -45,18 +45,18 @@ const PathArray = ({ path, title, errorMessage, className }: PropTypes) => {
       <ul className={styles.path}>
         {hasPath &&
           path.map((coordinate, idx) => {
-            const isLastItem = idx === path.length - 1
+            const isLastItem = idx === path.length - 1;
             return (
               <PathCell
                 key={`${idx}-${coordinate}`}
                 coordinate={coordinate}
                 hasArrow={!isLastItem}
               />
-            )
+            );
           })}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default PathArray
+export default PathArray;
