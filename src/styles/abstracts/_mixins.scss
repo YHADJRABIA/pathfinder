@@ -1,14 +1,14 @@
 $breakpoints: (
-  "small": (
+  'small': (
     max-width: 767px,
   ),
-  "medium": (
+  'medium': (
     min-width: 768px,
   ),
-  "large": (
+  'large': (
     min-width: 1024px,
   ),
-  "huge": (
+  'huge': (
     min-width: 1200px,
   ),
 );
@@ -99,7 +99,7 @@ $breakpoints: (
 
   @if $raw-query {
     $query: if(
-      type-of($raw-query) == "string",
+      type-of($raw-query) == 'string',
       unquote($raw-query),
       inspect($raw-query)
     );
@@ -114,18 +114,18 @@ $breakpoints: (
 }
 
 @mixin hideOnSmall {
-  @include respond-to("small") {
+  @include respond-to('small') {
     display: none;
   }
 }
 
 @mixin hideOnMedium {
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     display: none;
   }
 }
 @mixin hideOnLarge {
-  @include respond-to("large") {
+  @include respond-to('large') {
     display: none;
   }
 }

@@ -3,71 +3,71 @@ import React, {
   HTMLAttributes,
   MouseEventHandler,
   ReactNode,
-} from "react";
-import styles from "./Typography.module.scss";
-import cn from "classnames";
+} from 'react'
+import styles from './Typography.module.scss'
+import cn from 'classnames'
 
-import { UrlObject } from "url";
-import { fontWeights, lineHeights } from "@/utils/font";
-import Link from "next/link";
+import { UrlObject } from 'url'
+import { fontWeights, lineHeights } from '@/utils/font'
+import Link from 'next/link'
 
-export type TagType = keyof typeof tagMap;
+export type TagType = keyof typeof tagMap
 
 export type LinkType = {
-  href: string | null | (UrlObject & string);
-  openInNewTab?: boolean;
-};
+  href: string | null | (UrlObject & string)
+  openInNewTab?: boolean
+}
 
-type TextWeight = keyof typeof fontWeights;
-type LineHeight = keyof typeof lineHeights;
-type TextSize = "xxs" | "xs" | "s" | "m" | "l" | "xl" | "xxl" | "xxxl";
-export type TextAlign = "left" | "center" | "right";
+type TextWeight = keyof typeof fontWeights
+type LineHeight = keyof typeof lineHeights
+type TextSize = 'xxs' | 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'
+export type TextAlign = 'left' | 'center' | 'right'
 
 export interface TypographyPropTypes extends HTMLAttributes<HTMLElement> {
-  weight?: TextWeight;
-  align?: TextAlign;
-  lineHeight?: LineHeight;
-  size?: TextSize;
-  color?: string;
-  uppercase?: boolean;
-  isFullWidth?: boolean;
-  link?: LinkType;
-  className?: string;
-  children: ReactNode;
-  onClick?: MouseEventHandler<HTMLElement>;
-  tag?: TagType;
-  backgroundColor?: string;
+  weight?: TextWeight
+  align?: TextAlign
+  lineHeight?: LineHeight
+  size?: TextSize
+  color?: string
+  uppercase?: boolean
+  isFullWidth?: boolean
+  link?: LinkType
+  className?: string
+  children: ReactNode
+  onClick?: MouseEventHandler<HTMLElement>
+  tag?: TagType
+  backgroundColor?: string
 }
 
 const tagMap = {
-  h1: "h1",
-  h2: "h2",
-  h3: "h3",
-  h4: "h4",
-  h5: "h5",
-  h6: "h6",
-  p: "p",
-  small: "small",
-  span: "span",
-} as const;
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  p: 'p',
+  small: 'small',
+  span: 'span',
+} as const
 
 const Typography = ({
-  tag = "p",
-  weight = "normal",
+  tag = 'p',
+  weight = 'normal',
   color,
   uppercase = false,
-  align = "left",
+  align = 'left',
   size,
   link = { href: null, openInNewTab: false },
   className,
   children,
   isFullWidth,
-  lineHeight = "regular",
+  lineHeight = 'regular',
   onClick,
   backgroundColor,
   ...props
 }: TypographyPropTypes) => {
-  const Tag = tagMap[tag];
+  const Tag = tagMap[tag]
 
   const PropStyles = {
     fontWeight: fontWeights[weight] || weight,
@@ -75,24 +75,24 @@ const Typography = ({
     textAlign: align,
     color,
     backgroundColor,
-  };
+  }
 
-  const handleClick: MouseEventHandler<HTMLElement> = (event) => {
-    if (onClick) onClick(event);
-  };
+  const handleClick: MouseEventHandler<HTMLElement> = event => {
+    if (onClick) onClick(event)
+  }
 
   return link?.href ? (
     <Link
       {...props}
       href={link.href}
       style={PropStyles as CSSProperties}
-      target={link.openInNewTab ? "_blank" : undefined}
-      rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+      target={link.openInNewTab ? '_blank' : undefined}
+      rel={link.openInNewTab ? 'noopener noreferrer' : undefined}
       className={cn(
         styles.root,
         { isFullWidth, uppercase },
         size && styles[size],
-        className,
+        className
       )}
     >
       {children}
@@ -105,13 +105,13 @@ const Typography = ({
         styles.root,
         { isFullWidth, uppercase },
         size && styles[size],
-        className,
+        className
       )}
       onClick={onClick ? handleClick : undefined} // Allows component to remain server component if no onClick is passed
     >
       {children}
     </Tag>
-  );
-};
+  )
+}
 
-export default Typography;
+export default Typography

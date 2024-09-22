@@ -2,7 +2,7 @@
   @include flexCenter(column, flex-start, flex-start);
   gap: 1rem;
   width: 100%;
-  @include respond-to("medium") {
+  @include respond-to('medium') {
     width: 20rem;
   }
 }

@@ -1,17 +1,17 @@
-import { Coordinate } from "@/types/pathfinder";
-import { formatCoordinateToYX } from "@/utils/pathfinder";
-import styles from "./PathCell.module.scss";
-import React from "react";
-import Typography from "@/components/UI/Typography";
-import { PiArrowRightThin as RightArrow } from "react-icons/pi";
+import { Coordinate } from '@/types/pathfinder'
+import { formatCoordinateToYX } from '@/utils/pathfinder'
+import styles from './PathCell.module.scss'
+import React from 'react'
+import Typography from '@/components/UI/Typography'
+import { PiArrowRightThin as RightArrow } from 'react-icons/pi'
 
 interface PropTypes {
-  coordinate: Coordinate;
-  hasArrow?: boolean;
+  coordinate: Coordinate
+  hasArrow?: boolean
 }
 
 const PathCell = ({ coordinate, hasArrow }: PropTypes) => {
-  const formattedCoordinate = formatCoordinateToYX(coordinate);
+  const formattedCoordinate = formatCoordinateToYX(coordinate)
 
   return (
     <li className={styles.root}>
@@ -20,7 +20,7 @@ const PathCell = ({ coordinate, hasArrow }: PropTypes) => {
       </Typography>
       {hasArrow && <RightArrow size={18} />}
     </li>
-  );
-};
+  )
+}
 
-export default PathCell;
+export default PathCell

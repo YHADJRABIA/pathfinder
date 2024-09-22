@@ -1,13 +1,13 @@
-import React, { ChangeEvent } from "react";
-import styles from "./Uploader.module.scss";
-import cn from "classnames";
-import Typography from "../UI/Typography";
+import React, { ChangeEvent } from 'react'
+import styles from './Uploader.module.scss'
+import cn from 'classnames'
+import Typography from '../UI/Typography'
 
 interface PropTypes {
-  onUpload: (event: ChangeEvent<HTMLInputElement>) => void;
-  validFormat?: string;
-  className?: string;
-  errorMessage: string | null;
+  onUpload: (event: ChangeEvent<HTMLInputElement>) => void
+  validFormat?: string
+  className?: string
+  errorMessage: string | null
 }
 
 // Component should be as dump as possible, i.e. no logic coupled to this component
@@ -34,7 +34,7 @@ const Uploader = ({
         <Typography color="var(--primary-red-color)">{errorMessage}</Typography>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Uploader;
+export default Uploader

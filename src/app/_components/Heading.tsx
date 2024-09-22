@@ -1,12 +1,12 @@
-import Typography from "@/components/UI/Typography";
-import React from "react";
-import styles from "./Heading.module.scss";
-import cn from "classnames";
-import { PiPathThin as PathIcon } from "react-icons/pi";
+import Typography from '@/components/UI/Typography'
+import React from 'react'
+import styles from './Heading.module.scss'
+import cn from 'classnames'
+import { PiPathThin as PathIcon } from 'react-icons/pi'
 
 interface PropTypes {
-  label: string;
-  className?: string;
+  label: string
+  className?: string
 }
 
 const Heading = ({ label, className }: PropTypes) => {
@@ -17,7 +17,7 @@ const Heading = ({ label, className }: PropTypes) => {
         {label}
       </Typography>
     </div>
-  );
-};
+  )
+}
 
-export default Heading;
+export default Heading

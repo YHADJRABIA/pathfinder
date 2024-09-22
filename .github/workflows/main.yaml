@@ -2,12 +2,12 @@ on:
   push:
     branches: [main]
     paths-ignore:
-      - "**/README.md"
+      - '**/README.md'
 
   pull_request:
     branches: [main]
     paths-ignore:
-      - "**/README.md"
+      - '**/README.md'
 
   workflow_dispatch:
 
@@ -29,10 +29,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: '20.x'
           check-latest: true
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Cache Node.js dependencies
         id: npm-cache
@@ -65,10 +65,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: '20.x'
           check-latest: true
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Cache Node.js dependencies
         id: npm-cache
@@ -100,10 +100,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: '20.x'
           check-latest: true
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Cache Node.js dependencies
         id: npm-cache
@@ -133,10 +133,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: '20.x'
           check-latest: true
-          cache: "npm"
-          cache-dependency-path: "**/package-lock.json"
+          cache: 'npm'
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Cache Node.js dependencies
         id: npm-cache

@@ -1,40 +1,37 @@
-import { getErrorMessage } from "@/utils/error";
-import { findShortestPath } from "@/utils/pathfinder";
-import { NextRequest, NextResponse } from "next/server";
+import { getErrorMessage } from '@/utils/error'
+import { findShortestPath } from '@/utils/pathfinder'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
+    const body = await req.json()
 
     // Validate incoming data
     if (!body || !body.grid || !body.start || !body.end) {
       return NextResponse.json(
-        { message: "Invalid input data", success: false },
-        { status: 400 },
-      );
+        { message: 'Invalid input data', success: false },
+        { status: 400 }
+      )
     }
 
-    const { grid, start, end } = body;
+    const { grid, start, end } = body
 
     // Call the pathfinding logic
-    const path = findShortestPath(grid, start, end);
+    const path = findShortestPath(grid, start, end)
 
     if (!path) {
       return NextResponse.json(
-        { message: "No path found", success: false },
-        { status: 404 },
-      );
+        { message: 'No path found', success: false },
+        { status: 404 }
+      )
     }
 
     return NextResponse.json({
-      message: "Path found successfully",
+      message: 'Path found successfully',
       success: true,
       path,
-    });
+    })
   } catch (error) {
-    return NextResponse.json(
-      { error: getErrorMessage(error) },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: getErrorMessage(error) }, { status: 500 })
   }
 }
