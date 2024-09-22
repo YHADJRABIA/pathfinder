@@ -21,9 +21,19 @@ Upload .json file (from /utils/samples) and get the shortest path returned as a 
 - API errrors are handled via a utility function;
 - Types are separated on their own folder;
 
-• Tests using Jest target only the most important logic;
+### CI/CD:
 
-• Project uses TypeScript and has Prettier & Linter rules;
+• Jest testing only covers the most important logic;
+
+• Conventions & code security are enforced with TypeScript, ESLint & Prettier;
+
+• Workflows are coordinated by `main.yaml`:
+
+- Linting;
+- Formatting;
+- Typing;
+- Testing;
+- Building.
 
 ## Note that:
 
